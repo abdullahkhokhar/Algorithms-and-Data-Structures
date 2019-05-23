@@ -1,10 +1,25 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
-class Solution:
-    def rangeSumBST(self, root: TreeNode, L: int, R: int) -> int:
-        
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+ class Solution {
+     public int rangeSumBST(TreeNode root, int L, int R) {
+         if(root == null){
+           return 0;
+         }
+         if(root.value >= L && root.value <= R){
+           return value + rangeSumBST(root.left, L, R) + rangeSumBST(root.right, L , R);
+         }
+         else if(root.value < L){
+           return rangeSumBST(root.right, L, R);
+         }
+         else{
+           return rangeSumBST(root.left, L, R);
+         }
+     }
+ }
