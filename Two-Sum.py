@@ -14,12 +14,11 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        hash_dict = {}
-        # add all the elements in the dictionary
-        for i in range((len(nums) - 1)):
-            hash_dict[nums[i]] = i
-        # go through and check for composite
-        for vals in hash_dict:
-            if (target-vals) in hash_dict:
-                return [hash_dict[vals], hash_dict[target-vals]]
-        
+        complement_dict = {}
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            
+            if complement in complement_dict:
+                return [complement_dict[complement], i]
+            else:
+                complement_dict[nums[i]] = i
